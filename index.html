@@ -1,43 +1,3749 @@
-<!-- =================================================
-     PARK
-     ================================================= -->
+** **[**https://waniyaarshad18-commits.github.io/the-perfect-day/**](https://waniyaarshad18-commits.github.io/the-perfect-day/)  
 
-<div
-    class="scene park-screen"
-    id="parkScreen"
->
+THIS IS MY CODE:
 
-    <div class="location-label">
-        📍 CITY PARK
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THE PERFECT DAY</title>
+
+<style>
+
+/* =========================================================
+   THE PERFECT DAY
+   RETRO WINDOWS XP / 2000s COMPUTER STYLE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #006b68 0%,
+            #008f8b 45%,
+            #005b59 100%
+        );
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    color: #111;
+
+    cursor: crosshair;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+.desktop {
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Desktop icons */
+
+.desktop-icon {
+    position: absolute;
+
+    width: 90px;
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    text-shadow:
+        1px 1px #000,
+        -1px -1px #000;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.desktop-icon:hover {
+    background: rgba(0, 0, 128, 0.35);
+}
+
+.icon-image {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+
+/* =========================================================
+   MAIN GAME WINDOW
+   ========================================================= */
+
+.game-window {
+
+    position: absolute;
+
+    width: min(1100px, 94vw);
+    height: min(720px, 88vh);
+
+    left: 50%;
+    top: 47%;
+
+    transform: translate(-50%, -50%);
+
+    background: #c0c0c0;
+
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+
+    border-right: 3px solid #333;
+    border-bottom: 3px solid #333;
+
+    box-shadow:
+        7px 7px 0 rgba(0,0,0,.5);
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   WINDOWS TITLE BAR
+   ========================================================= */
+
+.titlebar {
+
+    height: 36px;
+
+    background:
+        linear-gradient(
+            to right,
+            #000080,
+            #1084d7
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 6px;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+.title-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.window-buttons {
+    display: flex;
+    gap: 3px;
+}
+
+.window-button {
+
+    width: 24px;
+    height: 23px;
+
+    background: #c0c0c0;
+
+    color: black;
+
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   GAME SCREEN
+   ========================================================= */
+
+.screen {
+
+    position: relative;
+
+    flex: 1;
+
+    overflow: hidden;
+
+    background: #161616;
+
+    border: 4px solid #222;
+}
+
+
+/* CRT effect */
+
+.screen::after {
+
+    content: "";
+
+    pointer-events: none;
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.035) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    mix-blend-mode: screen;
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   GAME HUD
+   ========================================================= */
+
+.hud {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 58px;
+
+    background:
+        linear-gradient(
+            #444,
+            #202020
+        );
+
+    border-bottom: 3px solid #777;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 6px 12px;
+
+    z-index: 30;
+
+    font-size: 13px;
+}
+
+.hud-left {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.stat {
+    white-space: nowrap;
+}
+
+.stat b {
+    color: #fff;
+}
+
+.time-display {
+
+    color: #00ff55;
+
+    background: #000;
+
+    padding: 5px 9px;
+
+    border: 2px inset #777;
+
+    font-size: 17px;
+
+    min-width: 105px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SCENE
+   ========================================================= */
+
+.scene {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 58px;
+    bottom: 34px;
+
+    overflow: hidden;
+
+    transition:
+        background .5s;
+}
+
+
+/* =========================================================
+   BEDROOM
+   ========================================================= */
+
+.bedroom {
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #82b3cf 0%,
+            #a9d3e6 52%,
+            #8e674f 52%,
+            #74513f 100%
+        );
+}
+
+
+/* Window */
+
+.real-window {
+
+    position: absolute;
+
+    top: 60px;
+    right: 100px;
+
+    width: 190px;
+    height: 150px;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #72c9ef,
+            #c9f1ff
+        );
+
+    border: 10px solid #ddd;
+
+    box-shadow:
+        inset 0 0 0 4px #555,
+        5px 5px 0 rgba(0,0,0,.4);
+
+    cursor: pointer;
+}
+
+.real-window::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+
+    height: 100%;
+
+    width: 5px;
+
+    background: #777;
+}
+
+.real-window::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 5px;
+
+    background: #777;
+}
+
+
+/* Sun */
+
+.sun {
+
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #ffe66d;
+
+    top: 20px;
+    right: 25px;
+
+    box-shadow:
+        0 0 20px #fff3a6;
+}
+
+
+/* Bed */
+
+.bed-object {
+
+    position: absolute;
+
+    left: 75px;
+    bottom: 55px;
+
+    width: 330px;
+    height: 150px;
+
+    background: #3e506d;
+
+    border: 6px solid #202c40;
+
+    box-shadow:
+        8px 8px 0 rgba(0,0,0,.35);
+
+    cursor: pointer;
+}
+
+.bed-object::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+    top: 12px;
+
+    width: 115px;
+    height: 70px;
+
+    background: #eee;
+
+    border: 4px solid #aaa;
+}
+
+.bed-object::after {
+
+    content: "Z Z";
+
+    position: absolute;
+
+    right: 35px;
+    top: -50px;
+
+    color: #fff;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+
+/* Desk */
+
+.desk {
+
+    position: absolute;
+
+    right: 70px;
+    bottom: 60px;
+
+    width: 260px;
+    height: 120px;
+
+    background: #70472f;
+
+    border: 6px solid #4a2e20;
+
+    cursor: pointer;
+}
+
+.desk-top {
+
+    position: absolute;
+
+    top: -22px;
+    left: -10px;
+
+    width: 280px;
+    height: 25px;
+
+    background: #8b5a3c;
+
+    border: 5px solid #4a2e20;
+}
+
+
+/* Phone */
+
+.phone-object {
+
+    position: absolute;
+
+    right: 95px;
+    bottom: 115px;
+
+    font-size: 48px;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(3px 3px 0 #111);
+}
+
+
+/* Headphones */
+
+.headphone-object {
+
+    position: absolute;
+
+    left: 360px;
+    top: 80px;
+
+    font-size: 65px;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(3px 3px 0 #111);
+}
+
+
+/* Photo */
+
+.photo-object {
+
+    position: absolute;
+
+    right: 155px;
+    bottom: 145px;
+
+    font-size: 45px;
+
+    cursor: pointer;
+}
+
+
+/* Door */
+
+.door-object {
+
+    position: absolute;
+
+    left: 40px;
+    top: 80px;
+
+    width: 85px;
+    height: 230px;
+
+    background: #754b31;
+
+    border: 7px solid #4a2e20;
+
+    cursor: pointer;
+
+    box-shadow:
+        5px 5px 0 rgba(0,0,0,.3);
+}
+
+.door-object::after {
+
+    content: "●";
+
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    color: #d9b44a;
+}
+
+
+/* =========================================================
+   ROOM LABEL
+   ========================================================= */
+
+.location-label {
+
+    position: absolute;
+
+    left: 15px;
+    top: 15px;
+
+    color: white;
+
+    background: rgba(0,0,0,.65);
+
+    border: 2px solid white;
+
+    padding: 5px 9px;
+
+    font-size: 13px;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   DIALOGUE BOX
+   ========================================================= */
+
+.dialogue {
+
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+    bottom: 15px;
+
+    min-height: 110px;
+
+    background: rgba(0,0,0,.92);
+
+    border: 3px solid white;
+
+    box-shadow:
+        5px 5px 0 #000;
+
+    color: white;
+
+    padding: 13px;
+
+    z-index: 40;
+
+    display: none;
+}
+
+.dialogue-name {
+
+    color: #55baff;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+.dialogue-text {
+
+    line-height: 1.45;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+.dialogue-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+/* =========================================================
+   RETRO BUTTON
+   ========================================================= */
+
+.retro-button {
+
+    background: #c0c0c0;
+
+    color: #000;
+
+    padding: 6px 12px;
+
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
+
+    font-family: "Courier New", monospace;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.retro-button:hover {
+
+    background: #ddd;
+}
+
+.retro-button:active {
+
+    border-top: 2px solid #555;
+    border-left: 2px solid #555;
+
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+   ========================================================= */
+
+.bottom-bar {
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 34px;
+
+    background: #c0c0c0;
+
+    border-top: 3px solid white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 8px;
+
+    font-size: 12px;
+
+    z-index: 45;
+}
+
+
+/* =========================================================
+   MAP
+   ========================================================= */
+
+.map {
+
+    background:
+        radial-gradient(
+            circle,
+            #789d55 0%,
+            #56783c 100%
+        );
+
+    display: none;
+}
+
+.map-title {
+
+    position: absolute;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: #000;
+
+    color: #fff;
+
+    padding: 8px 20px;
+
+    border: 2px solid white;
+
+    font-size: 18px;
+}
+
+
+/* Map locations */
+
+.map-location {
+
+    position: absolute;
+
+    width: 120px;
+
+    min-height: 65px;
+
+    background: #c0c0c0;
+
+    border: 3px solid white;
+
+    box-shadow:
+        5px 5px 0 #222;
+
+    padding: 7px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.map-location:hover {
+
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+.home {
+    left: 12%;
+    top: 42%;
+}
+
+.city {
+    left: 43%;
+    top: 42%;
+}
+
+.park {
+    left: 43%;
+    top: 16%;
+}
+
+.arcade {
+    right: 10%;
+    top: 42%;
+}
+
+.cafe {
+    left: 43%;
+    bottom: 15%;
+}
+
+.beach {
+    left: 12%;
+    bottom: 15%;
+}
+
+
+/* Roads */
+
+.road {
+
+    position: absolute;
+
+    background: #aaa;
+
+    z-index: 0;
+}
+
+.road-horizontal {
+
+    left: 12%;
+    right: 10%;
+
+    top: 48%;
+
+    height: 30px;
+}
+
+.road-vertical {
+
+    top: 16%;
+    bottom: 15%;
+
+    left: 48%;
+
+    width: 30px;
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+.phone-screen {
+
+    background: #242424;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.phone-device {
+
+    width: 330px;
+
+    background: #111;
+
+    border: 8px solid #555;
+
+    border-radius: 22px;
+
+    padding: 18px;
+
+    color: #00ff77;
+
+    box-shadow:
+        10px 10px 0 #000;
+}
+
+.phone-top {
+
+    border-bottom: 2px solid #00ff77;
+
+    padding-bottom: 8px;
+
+    margin-bottom: 10px;
+
+    text-align: center;
+}
+
+.notification {
+
+    padding: 9px 4px;
+
+    border-bottom: 1px dashed #555;
+
+    cursor: pointer;
+}
+
+.notification:hover {
+
+    background: #333;
+}
+
+
+/* =========================================================
+   ARCADE
+   ========================================================= */
+
+.arcade-screen {
+
+    background:
+        radial-gradient(
+            circle,
+            #4a0a68,
+            #090013
+        );
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    color: white;
+}
+
+.arcade-machine {
+
+    width: 420px;
+
+    background: #222;
+
+    border: 8px solid #111;
+
+    box-shadow:
+        8px 8px 0 #000;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+.arcade-display {
+
+    background: #001d08;
+
+    color: #00ff55;
+
+    border: 5px inset #555;
+
+    padding: 25px;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+.arcade-target {
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: #ff3b3b;
+
+    border: 5px solid white;
+
+    cursor: pointer;
+
+    margin: 20px auto;
+
+    display: none;
+}
+
+
+/* =========================================================
+   BEACH
+   ========================================================= */
+
+.beach-screen {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #71d0ef 0%,
+            #c8f3ff 45%,
+            #eadc9b 45%,
+            #d6bc67 100%
+        );
+
+    display: none;
+}
+
+.beach-sun {
+
+    position: absolute;
+
+    top: 45px;
+    right: 100px;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background: #fff07a;
+
+    box-shadow:
+        0 0 40px #fff;
+}
+
+.ocean {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 0;
+
+    height: 50%;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #168fb5,
+            #168fb5 15px,
+            #2ba9ca 15px,
+            #2ba9ca 30px
+        );
+}
+
+.camera {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 300px;
+
+    background: #222;
+
+    border: 7px solid #555;
+
+    color: white;
+
+    padding: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        8px 8px 0 #000;
+}
+
+
+/* =========================================================
+   CAFE
+   ========================================================= */
+
+.cafe-screen {
+
+    background:
+        linear-gradient(
+            #d6b28a,
+            #9a6842
+        );
+
+    display: none;
+}
+
+.cafe-table {
+
+    position: absolute;
+
+    left: 50%;
+    top: 55%;
+
+    transform: translate(-50%, -50%);
+
+    width: 500px;
+    height: 220px;
+
+    background: #603b27;
+
+    border: 8px solid #3a2419;
+
+    box-shadow:
+        10px 10px 0 #000;
+}
+
+.cafe-character {
+
+    position: absolute;
+
+    left: 50%;
+    top: 20%;
+
+    transform: translateX(-50%);
+
+    font-size: 100px;
+}
+
+
+/* =========================================================
+   EVENT POPUP
+   ========================================================= */
+
+.event-popup {
+
+    position: absolute;
+
+    z-index: 100;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(500px, 85vw);
+
+    background: #c0c0c0;
+
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+
+    border-right: 4px solid #333;
+    border-bottom: 4px solid #333;
+
+    box-shadow:
+        10px 10px 0 #000;
+
+    display: none;
+}
+
+.event-title {
+
+    background:
+        linear-gradient(
+            to right,
+            #000080,
+            #1084d7
+        );
+
+    color: white;
+
+    padding: 7px;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+}
+
+.event-content {
+
+    padding: 20px;
+
+    background: #eee;
+
+    line-height: 1.5;
+}
+
+.event-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+    justify-content: flex-end;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   END SCREEN
+   ========================================================= */
+
+.ending-screen {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 200;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle,
+            #192d44,
+            #030507
+        );
+
+    color: white;
+
+    text-align: center;
+}
+
+.ending-screen h1 {
+
+    font-size: clamp(30px, 6vw, 65px);
+
+    color: #ffe98a;
+
+    text-shadow:
+        4px 4px #000;
+
+    margin: 5px;
+}
+
+.ending-screen h2 {
+
+    color: #8fdcff;
+
+    margin: 10px;
+}
+
+.ending-stats {
+
+    margin: 20px;
+
+    padding: 15px 30px;
+
+    background: rgba(0,0,0,.6);
+
+    border: 2px solid #777;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+   ========================================================= */
+
+.loading {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: #000;
+
+    color: #00ff44;
+
+    z-index: 999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    font-family: monospace;
+}
+
+.loading-title {
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+.progress {
+
+    width: 300px;
+
+    height: 20px;
+
+    border: 2px solid #00ff44;
+}
+
+.progress-inner {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #00ff44;
+
+    animation: load 1.8s linear forwards;
+}
+
+@keyframes load {
+
+    to {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   SMALL SCREENS
+   ========================================================= */
+
+@media(max-width: 700px) {
+
+    .game-window {
+
+        width: 98vw;
+        height: 94vh;
+
+        top: 48%;
+    }
+
+    .hud {
+
+        font-size: 10px;
+    }
+
+    .hud-left {
+
+        gap: 5px;
+    }
+
+    .bed-object {
+
+        left: 20px;
+
+        width: 230px;
+        height: 120px;
+    }
+
+    .desk {
+
+        right: 20px;
+
+        width: 190px;
+    }
+
+    .real-window {
+
+        right: 20px;
+
+        width: 140px;
+        height: 110px;
+    }
+
+    .phone-object {
+
+        right: 45px;
+    }
+
+    .door-object {
+
+        left: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOADING SCREEN
+     ===================================================== -->
+
+<div class="loading" id="loading">
+
+    <div class="loading-title">
+        THE PERFECT DAY
     </div>
 
-    <div
-        class="camera"
-        style="background:rgba(0,0,0,.75);"
-    >
+    <div>
+        Starting computer...
+    </div>
 
-        <h2>🌳 THE PARK</h2>
+    <br>
 
-        <p>
-            A quiet afternoon.
-            <br>
-            The perfect place to make a memory.
-        </p>
-
-        <button
-            class="retro-button"
-            onclick="parkMemory()"
-        >
-            🧠 MAKE A MEMORY
-        </button>
-
-        <button
-            class="retro-button"
-            onclick="goToMap()"
-        >
-            ← LEAVE PARK
-        </button>
-
+    <div class="progress">
+        <div class="progress-inner"></div>
     </div>
 
 </div>
+
+
+<!-- =====================================================
+     DESKTOP
+     ===================================================== -->
+
+<div class="desktop">
+
+
+    <!-- Desktop icon -->
+
+    <div
+        class="desktop-icon"
+        style="left:30px;top:35px;"
+        onclick="openGame()"
+    >
+
+        <span class="icon-image">🎮</span>
+
+        THE PERFECT<br>
+        DAY
+
+    </div>
+
+
+    <div
+        class="desktop-icon"
+        style="left:30px;top:140px;"
+    >
+
+        <span class="icon-image">🗑️</span>
+
+        Recycle Bin
+
+    </div>
+
+
+    <!-- =================================================
+         GAME WINDOW
+         ================================================= -->
+
+    <div class="game-window" id="gameWindow">
+
+
+        <!-- TITLE BAR -->
+
+        <div class="titlebar">
+
+            <div class="title-left">
+
+                <span>🎮</span>
+
+                <span>
+                    THE PERFECT DAY — v1.0.2006
+                </span>
+
+            </div>
+
+
+            <div class="window-buttons">
+
+                <div class="window-button">_</div>
+
+                <div
+                    class="window-button"
+                    onclick="closeGame()"
+                >
+                    X
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCREEN -->
+
+        <div class="screen">
+
+
+            <!-- =================================================
+                 HUD
+                 ================================================= -->
+
+            <div class="hud">
+
+                <div class="hud-left">
+
+                    <div class="stat">
+                        ❤️ <b id="relationship">0</b>
+                    </div>
+
+                    <div class="stat">
+                        ⚡ <b id="energy">100</b>
+                    </div>
+
+                    <div class="stat">
+                        😊 <b id="mood">75</b>
+                    </div>
+
+                    <div class="stat">
+                        🧠 <b id="memoryCount">0</b>
+                    </div>
+
+                </div>
+
+
+                <div class="time-display" id="time">
+                    7:03 AM
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BEDROOM SCENE
+                 ================================================= -->
+
+            <div
+                class="scene bedroom"
+                id="bedroom"
+            >
+
+                <div class="location-label">
+                    📍 HOME — BEDROOM
+                </div>
+
+
+                <div
+                    class="sun"
+                ></div>
+
+
+                <div
+                    class="real-window"
+                    onclick="interact('window')"
+                ></div>
+
+
+                <div
+                    class="bed-object"
+                    onclick="interact('bed')"
+                ></div>
+
+
+                <div
+                    class="desk"
+                >
+
+                    <div class="desk-top"></div>
+
+                </div>
+
+
+                <div
+                    class="phone-object"
+                    onclick="openPhone()"
+                >
+                    📱
+                </div>
+
+
+                <div
+                    class="headphone-object"
+                    onclick="interact('headphones')"
+                >
+                    🎧
+                </div>
+
+
+                <div
+                    class="photo-object"
+                    onclick="interact('photo')"
+                >
+                    🖼️
+                </div>
+
+
+                <div
+                    class="door-object"
+                    onclick="goToMap()"
+                ></div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 MAP
+                 ================================================= -->
+
+            <div
+                class="scene map"
+                id="map"
+            >
+
+                <div class="map-title">
+                    🗺️ SATURDAY — WHERE TO?
+                </div>
+
+
+                <div class="road road-horizontal"></div>
+
+                <div class="road road-vertical"></div>
+
+
+                <div
+                    class="map-location home"
+                    onclick="goHome()"
+                >
+                    🏠<br>
+                    HOME
+                </div>
+
+
+                <div
+                    class="map-location city"
+                    onclick="cityEvent()"
+                >
+                    🏙️<br>
+                    CITY
+                </div>
+
+
+                <div
+                    class="map-location park"
+                    onclick="goPark()"
+                >
+                    🏞️<br>
+                    PARK
+                </div>
+
+
+                <div
+                    class="map-location arcade"
+                    onclick="goArcade()"
+                >
+                    🎮<br>
+                    ARCADE
+                </div>
+
+
+                <div
+                    class="map-location cafe"
+                    onclick="goCafe()"
+                >
+                    ☕<br>
+                    CAFE
+                </div>
+
+
+                <div
+                    class="map-location beach"
+                    onclick="goBeach()"
+                >
+                    🌊<br>
+                    BEACH
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PHONE
+                 ================================================= -->
+
+            <div
+                class="scene phone-screen"
+                id="phoneScreen"
+            >
+
+                <div class="phone-device">
+
+                    <div class="phone-top">
+
+                        📱 PHONE
+
+                        <br>
+
+                        <small>
+                            8 notifications
+                        </small>
+
+                    </div>
+
+
+                    <div
+                        class="notification"
+                        onclick="phoneMessage('mom')"
+                    >
+
+                        👩 MOM
+
+                        <br>
+
+                        "Breakfast?"
+
+                    </div>
+
+
+                    <div
+                        class="notification"
+                        onclick="phoneMessage('friend')"
+                    >
+
+                        🧑 BEST FRIEND
+
+                        <br>
+
+                        "BRO WAKE UP."
+
+                    </div>
+
+
+                    <div
+                        class="notification"
+                        onclick="phoneMessage('unknown')"
+                    >
+
+                        👁️ UNKNOWN
+
+                        <br>
+
+                        "Don't go to the park today."
+
+                    </div>
+
+
+                    <div
+                        class="notification"
+                    >
+
+                        📷 Camera
+
+                        <br>
+
+                        "You have 12 new photos."
+
+                    </div>
+
+
+                    <br>
+
+
+                    <button
+                        class="retro-button"
+                        onclick="closePhone()"
+                    >
+                        ← BACK
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ARCADE
+                 ================================================= -->
+
+            <div
+                class="scene arcade-screen"
+                id="arcadeScreen"
+            >
+
+                <div class="arcade-machine">
+
+                    <h2>
+                        🎮 INSERT COIN
+                    </h2>
+
+                    <div
+                        class="arcade-display"
+                        id="arcadeDisplay"
+                    >
+                        HIGH SCORE: 9999
+                    </div>
+
+
+                    <button
+                        class="retro-button"
+                        onclick="startArcade()"
+                    >
+                        START GAME
+                    </button>
+
+
+                    <div
+                        class="arcade-target"
+                        id="arcadeTarget"
+                        onclick="hitTarget()"
+                    >
+                    </div>
+
+
+                    <br>
+
+
+                    <button
+                        class="retro-button"
+                        onclick="goToMap()"
+                    >
+                        EXIT ARCADE
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BEACH
+                 ================================================= -->
+
+            <div
+                class="scene beach-screen"
+                id="beachScreen"
+            >
+
+                <div class="location-label">
+                    📍 BEACH
+                </div>
+
+
+                <div class="beach-sun"></div>
+
+                <div class="ocean"></div>
+
+
+                <div class="camera">
+
+                    <h2>
+                        📸 DIGITAL CAMERA
+                    </h2>
+
+                    <p id="cameraText">
+                        Find something beautiful.
+                    </p>
+
+
+                    <button
+                        class="retro-button"
+                        onclick="takePhoto('sunset')"
+                    >
+                        🌅 SUNSET
+                    </button>
+
+
+                    <button
+                        class="retro-button"
+                        onclick="takePhoto('ocean')"
+                    >
+                        🌊 OCEAN
+                    </button>
+
+
+                    <button
+                        class="retro-button"
+                        onclick="takePhoto('friend')"
+                    >
+                        ❤️ SOMEONE
+                    </button>
+
+
+                    <br><br>
+
+
+                    <button
+                        class="retro-button"
+                        onclick="goToMap()"
+                    >
+                        EXIT BEACH
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CAFE
+                 ================================================= -->
+
+            <div
+                class="scene cafe-screen"
+                id="cafeScreen"
+            >
+
+                <div class="location-label">
+                    📍 OLD CAFE
+                </div>
+
+
+                <div class="cafe-character">
+                    🧑
+                </div>
+
+
+                <div class="cafe-table">
+
+                    <div
+                        style="
+                        color:white;
+                        text-align:center;
+                        padding:30px;
+                        "
+                    >
+
+                        <h2>
+                            THE CAFE
+                        </h2>
+
+                        <p>
+                            Your friend isn't here.
+                        </p>
+
+                        <p>
+                            But someone is watching you.
+                        </p>
+
+
+                        <button
+                            class="retro-button"
+                            onclick="talkCafeGuy()"
+                        >
+                            TALK
+                        </button>
+
+
+                        <button
+                            class="retro-button"
+                            onclick="goToMap()"
+                        >
+                            LEAVE
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 DIALOGUE
+                 ================================================= -->
+
+            <div
+                class="dialogue"
+                id="dialogue"
+            >
+
+                <div
+                    class="dialogue-name"
+                    id="dialogueName"
+                >
+                    SYSTEM
+                </div>
+
+
+                <div
+                    class="dialogue-text"
+                    id="dialogueText"
+                >
+                </div>
+
+
+                <div
+                    class="dialogue-buttons"
+                    id="dialogueButtons"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EVENT POPUP
+                 ================================================= -->
+
+            <div
+                class="event-popup"
+                id="eventPopup"
+            >
+
+                <div
+                    class="event-title"
+                    id="eventTitle"
+                >
+                    SYSTEM
+                </div>
+
+
+                <div
+                    class="event-content"
+                    id="eventContent"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ENDING
+                 ================================================= -->
+
+            <div
+                class="ending-screen"
+                id="endingScreen"
+            >
+
+                <div>
+                    🌅
+                </div>
+
+                <h1>
+                    YOUR PERFECT DAY
+                </h1>
+
+                <h2 id="endingTitle">
+                    THE MEMORY MAKER
+                </h2>
+
+
+                <div
+                    class="ending-stats"
+                    id="endingStats"
+                >
+                </div>
+
+
+                <button
+                    class="retro-button"
+                    onclick="restartGame()"
+                >
+                    PLAY AGAIN
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOTTOM BAR
+                 ================================================= -->
+
+            <div class="bottom-bar">
+
+                <span>
+                    🪟 START
+                </span>
+
+                <span>
+                    THE PERFECT DAY
+                </span>
+
+                <span>
+                    💾 GAME SAVED
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   GAME DATA
+   ========================================================= */
+
+
+let game = {
+
+    hour: 7,
+
+    minute: 3,
+
+    energy: 100,
+
+    mood: 75,
+
+    relationship: 0,
+
+    memories: [],
+
+    clues: [],
+
+    decisions: 0,
+
+    peopleMet: 0,
+
+    mystery: false,
+
+    friendVisited: false,
+
+    arcadeWon: false,
+
+    photoTaken: false
+
+};
+
+
+/* =========================================================
+   LOAD SAVED DATA
+   ========================================================= */
+
+function saveGame() {
+
+    localStorage.setItem(
+        "perfectDaySave",
+        JSON.stringify(game)
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE HUD
+   ========================================================= */
+
+function updateHUD() {
+
+    document.getElementById("energy").innerText =
+        game.energy;
+
+    document.getElementById("mood").innerText =
+        game.mood;
+
+    document.getElementById("relationship").innerText =
+        game.relationship;
+
+    document.getElementById("memoryCount").innerText =
+        game.memories.length;
+
+    document.getElementById("time").innerText =
+        formatTime(
+            game.hour,
+            game.minute
+        );
+
+}
+
+
+/* =========================================================
+   FORMAT TIME
+   ========================================================= */
+
+function formatTime(hour, minute) {
+
+    let suffix = hour >= 12
+        ? "PM"
+        : "AM";
+
+    let displayHour = hour % 12;
+
+    if (displayHour === 0) {
+        displayHour = 12;
+    }
+
+    let displayMinute =
+        minute.toString().padStart(2, "0");
+
+    return (
+        displayHour +
+        ":" +
+        displayMinute +
+        " " +
+        suffix
+    );
+
+}
+
+
+/* =========================================================
+   ADVANCE TIME
+   ========================================================= */
+
+function advanceTime(minutes) {
+
+    game.minute += minutes;
+
+    while (game.minute >= 60) {
+
+        game.minute -= 60;
+
+        game.hour++;
+
+    }
+
+    game.decisions++;
+
+    saveGame();
+
+    updateHUD();
+
+
+    if (game.hour >= 24) {
+
+        finishDay();
+
+    }
+
+}
+
+
+/* =========================================================
+   ADD MEMORY
+   ========================================================= */
+
+function addMemory(memory) {
+
+    if (!game.memories.includes(memory)) {
+
+        game.memories.push(memory);
+
+        showDialogue(
+            "MEMORY SAVED",
+            "🧠 " + memory,
+            [
+                {
+                    text: "Nice.",
+                    action: closeDialogue
+                }
+            ]
+        );
+
+    }
+
+    saveGame();
+
+    updateHUD();
+
+}
+
+
+/* =========================================================
+   ADD CLUE
+   ========================================================= */
+
+function addClue(clue) {
+
+    if (!game.clues.includes(clue)) {
+
+        game.clues.push(clue);
+
+    }
+
+    saveGame();
+
+}
+
+
+/* =========================================================
+   INTERACTION
+   ========================================================= */
+
+function interact(object) {
+
+
+    if (object === "bed") {
+
+        showDialogue(
+
+            "BED",
+
+            "You could sleep for another five hours...<br><br>" +
+            "But something tells you that today matters.",
+
+            [
+                {
+                    text: "Get up.",
+                    action: closeDialogue
+                },
+
+                {
+                    text: "Go back to sleep.",
+                    action: sleepAgain
+                }
+            ]
+
+        );
+
+    }
+
+
+    if (object === "window") {
+
+        showDialogue(
+
+            "WINDOW",
+
+            "The morning light is beautiful.<br><br>" +
+            "You have a strange feeling that you should remember this.",
+
+            [
+                {
+                    text: "Take it in.",
+                    action: function() {
+
+                        game.mood += 5;
+
+                        addMemory("Morning Light");
+
+                        closeDialogue();
+
+                    }
+                }
+            ]
+
+        );
+
+    }
+
+
+    if (object === "headphones") {
+
+        game.mood += 3;
+
+        showDialogue(
+
+            "HEADPHONES",
+
+            "Your favorite song is still on your MP3 player.<br><br>" +
+            "For a moment, everything feels okay.",
+
+            [
+                {
+                    text: "Put them on.",
+                    action: closeDialogue
+                }
+            ]
+
+        );
+
+    }
+
+
+    if (object === "photo") {
+
+        showDialogue(
+
+            "OLD PHOTO",
+
+            "A photograph sits on your desk.<br><br>" +
+            "You don't remember taking it.",
+
+            [
+                {
+                    text: "Look closer.",
+                    action: function() {
+
+                        addClue(
+                            "The strange photograph"
+                        );
+
+                        addMemory(
+                            "A Photograph From Nowhere"
+                        );
+
+                        closeDialogue();
+
+                    }
+                },
+
+                {
+                    text: "Put it down.",
+                    action: closeDialogue
+                }
+            ]
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SLEEP
+   ========================================================= */
+
+function sleepAgain() {
+
+    advanceTime(30);
+
+    game.energy += 15;
+
+    if (game.energy > 100) {
+        game.energy = 100;
+    }
+
+    showDialogue(
+
+        "30 MINUTES LATER",
+
+        "You wake up again.<br><br>" +
+        "7:33 AM.",
+
+        [
+            {
+                text: "Okay... NOW get up.",
+                action: closeDialogue
+            }
+        ]
+
+    );
+
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+function openPhone() {
+
+    hideScenes();
+
+    document.getElementById(
+        "phoneScreen"
+    ).style.display = "flex";
+
+}
+
+
+function closePhone() {
+
+    hideScenes();
+
+    document.getElementById(
+        "bedroom"
+    ).style.display = "block";
+
+}
+
+
+function phoneMessage(type) {
+
+
+    if (type === "mom") {
+
+        showDialogue(
+
+            "MOM",
+
+            "Mom: Breakfast?<br><br>" +
+            "You can practically hear her shouting from downstairs.",
+
+            [
+                {
+                    text: "I'll come down.",
+                    action: function() {
+
+                        closeDialogue();
+
+                        breakfast();
+
+                    }
+                }
+            ]
+
+        );
+
+    }
+
+
+    if (type === "friend") {
+
+        game.relationship += 5;
+
+        showDialogue(
+
+            "BEST FRIEND",
+
+            "\"BRO WAKE UP. WHERE ARE YOU?\"<br><br>" +
+            "You have 17 missed notifications.",
+
+            [
+                {
+                    text: "Text back.",
+                    action: function() {
+
+                        addMemory(
+                            "My Friend Woke Me Up"
+                        );
+
+                        closeDialogue();
+
+                    }
+                }
+            ]
+
+        );
+
+    }
+
+
+    if (type === "unknown") {
+
+        game.mystery = true;
+
+        addClue(
+            "Unknown warning"
+        );
+
+        showDialogue(
+
+            "UNKNOWN NUMBER",
+
+            "\"Don't go to the park today.\"<br><br>" +
+            "You don't recognize the number.",
+
+            [
+                {
+                    text: "Who is this?",
+                    action: function() {
+
+                        addClue(
+                            "Someone knows where you are"
+                        );
+
+                        closeDialogue();
+
+                    }
+                },
+
+                {
+                    text: "Ignore it.",
+                    action: closeDialogue
+                }
+            ]
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   BREAKFAST
+   ========================================================= */
+
+function breakfast() {
+
+    hideScenes();
+
+    document.getElementById(
+        "bedroom"
+    ).style.display = "block";
+
+
+    showDialogue(
+
+        "MOM",
+
+        "\"What are you doing today?\"",
+
+        [
+
+            {
+                text: "Nothing. Staying home.",
+
+                action: function() {
+
+                    game.mood += 2;
+
+                    advanceTime(10);
+
+                    momBreakfast();
+
+                }
+
+            },
+
+            {
+                text: "I'm going out with friends.",
+
+                action: function() {
+
+                    game.relationship += 5;
+
+                    advanceTime(10);
+
+                    momBreakfast();
+
+                }
+
+            },
+
+            {
+                text: "I don't know yet.",
+
+                action: function() {
+
+                    advanceTime(10);
+
+                    momBreakfast();
+
+                }
+
+            }
+
+        ]
+
+    );
+
+}
+
+
+/* =========================================================
+   MOM BREAKFAST
+   ========================================================= */
+
+function momBreakfast() {
+
+    showDialogue(
+
+        "BREAKFAST",
+
+        "There's cereal, toast and coffee.<br><br>" +
+        "What do you do?",
+
+        [
+
+            {
+                text: "Eat breakfast",
+
+                action: function() {
+
+                    game.energy += 15;
+
+                    if (game.energy > 100)
+                        game.energy = 100;
+
+                    advanceTime(20);
+
+                    addMemory("Breakfast With Mom");
+
+                    closeDialogue();
+
+                }
+
+            },
+
+            {
+                text: "Talk to Mom",
+
+                action: function() {
+
+                    game.relationship += 10;
+
+                    game.mood += 5;
+
+                    advanceTime(20);
+
+                    addMemory("Mom's Advice");
+
+                    closeDialogue();
+
+                }
+
+            },
+
+            {
+                text: "Leave immediately",
+
+                action: function() {
+
+                    game.energy -= 5;
+
+                    advanceTime(2);
+
+                    closeDialogue();
+
+                    goToMap();
+
+                }
+
+            }
+
+        ]
+
+    );
+
+}
+
+
+/* =========================================================
+   MAP
+   ========================================================= */
+
+function goToMap() {
+
+    closeDialogue();
+
+    hideScenes();
+
+    document.getElementById(
+        "map"
+    ).style.display = "block";
+
+}
+
+
+function goHome() {
+
+    hideScenes();
+
+    document.getElementById(
+        "bedroom"
+    ).style.display = "block";
+
+}
+
+
+/* =========================================================
+   PARK
+   ========================================================= */
+
+function goPark() {
+
+    advanceTime(25);
+
+    hideScenes();
+
+    document.getElementById(
+        "map"
+    ).style.display = "block";
+
+
+    if (game.mystery) {
+
+        showDialogue(
+
+            "PARK",
+
+            "The park is unusually quiet.<br><br>" +
+            "You find something underneath a bench.<br><br>" +
+            "A piece of paper.",
+
+            [
+
+                {
+                    text: "Read it.",
+
+                    action: function() {
+
+                        addClue(
+                            "You already chose this once."
+                        );
+
+                        addMemory(
+                            "The Park Note"
+                        );
+
+                        showDialogue(
+
+                            "THE NOTE",
+
+                            "\"You already chose this once.\"<br><br>" +
+                            "Underneath it is another message:<br><br>" +
+                            "\"6:42 PM. Don't miss it.\"",
+
+                            [
+                                {
+                                    text: "WHAT?",
+                                    action: function() {
+
+                                        addClue(
+                                            "6:42 PM"
+                                        );
+
+                                        closeDialogue();
+
+                                    }
+                                }
+                            ]
+
+                        );
+
+                    }
+
+                },
+
+                {
+                    text: "Leave.",
+
+                    action: closeDialogue
+
+                }
+
+            ]
+
+        );
+
+    } else {
+
+        showDialogue(
+
+            "PARK",
+
+            "The park is peaceful.<br><br>" +
+            "Maybe you'll come back later.",
+
+            [
+                {
+                    text: "Okay.",
+                    action: closeDialogue
+                }
+            ]
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CITY
+   ========================================================= */
+
+function cityEvent() {
+
+    advanceTime(15);
+
+    let random = Math.random();
+
+
+    if (random < .5) {
+
+        showDialogue(
+
+            "CITY",
+
+            "A stranger accidentally drops a wallet.",
+
+            [
+
+                {
+                    text: "Return it",
+
+                    action: function() {
+
+                        game.mood += 5;
+
+                        addMemory(
+                            "The Wallet"
+                        );
+
+                        closeDialogue();
+
+                    }
+
+                },
+
+                {
+                    text: "Leave it",
+
+                    action: closeDialogue
+
+                }
+
+            ]
+
+        );
+
+    } else {
+
+        showDialogue(
+
+            "CITY",
+
+            "Rain begins falling.<br><br>" +
+            "You have no umbrella.",
+
+            [
+
+                {
+                    text: "Dance in the rain",
+
+                    action: function() {
+
+                        game.mood += 10;
+
+                        addMemory(
+                            "Dancing In The Rain"
+                        );
+
+                        closeDialogue();
+
+                    }
+
+                },
+
+                {
+                    text: "Run home",
+
+                    action: function() {
+
+                        game.energy -= 5;
+
+                        closeDialogue();
+
+                    }
+
+                }
+
+            ]
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CAFE
+   ========================================================= */
+
+function goCafe() {
+
+    advanceTime(25);
+
+    hideScenes();
+
+    document.getElementById(
+        "cafeScreen"
+    ).style.display = "block";
+
+}
+
+
+function talkCafeGuy() {
+
+    game.peopleMet++;
+
+    game.mystery = true;
+
+    showDialogue(
+
+        "STRANGER",
+
+        "\"Nice day.\"<br><br>" +
+        "He looks at you strangely.<br><br>" +
+        "\"Although... you've been here before.\"",
+
+        [
+
+            {
+                text: "What do you mean?",
+
+                action: function() {
+
+                    addClue(
+                        "The café stranger remembers you"
+                    );
+
+                    showDialogue(
+
+                        "STRANGER",
+
+                        "\"You'll understand eventually.\"<br><br>" +
+                        "He leaves a strange coin on the table.",
+
+                        [
+
+                            {
+                                text: "Take the coin.",
+
+                                action: function() {
+
+                                    addMemory(
+                                        "Strange Coin"
+                                    );
+
+                                    addClue(
+                                        "Strange Coin"
+                                    );
+
+                                    closeDialogue();
+
+                                }
+
+                            }
+
+                        ]
+
+                    );
+
+                }
+
+            },
+
+            {
+                text: "Leave.",
+
+                action: closeDialogue
+
+            }
+
+        ]
+
+    );
+
+}
+
+
+/* =========================================================
+   ARCADE
+   ========================================================= */
+
+function goArcade() {
+
+    advanceTime(30);
+
+    hideScenes();
+
+    document.getElementById(
+        "arcadeScreen"
+    ).style.display = "flex";
+
+}
+
+
+let arcadeScore = 0;
+
+let arcadeRunning = false;
+
+
+function startArcade() {
+
+    arcadeScore = 0;
+
+    arcadeRunning = true;
+
+    document.getElementById(
+        "arcadeDisplay"
+    ).innerText =
+        "SCORE: 0";
+
+    document.getElementById(
+        "arcadeTarget"
+    ).style.display =
+        "block";
+
+    moveTarget();
+
+}
+
+
+function moveTarget() {
+
+    if (!arcadeRunning)
+        return;
+
+    let target =
+        document.getElementById(
+            "arcadeTarget"
+        );
+
+    target.style.marginLeft =
+        Math.random() * 200 - 100 +
+        "px";
+
+}
+
+
+function hitTarget() {
+
+    if (!arcadeRunning)
+        return;
+
+    arcadeScore++;
+
+    document.getElementById(
+        "arcadeDisplay"
+    ).innerText =
+        "SCORE: " + arcadeScore;
+
+    moveTarget();
+
+
+    if (arcadeScore >= 5) {
+
+        arcadeRunning = false;
+
+        game.arcadeWon = true;
+
+        document.getElementById(
+            "arcadeTarget"
+        ).style.display =
+            "none";
+
+        game.mood += 8;
+
+        addMemory(
+            "Arcade Victory"
+        );
+
+        showDialogue(
+
+            "🏆 SECRET ACHIEVEMENT",
+
+            "ONE MORE GAME<br><br>" +
+            "You beat the machine.",
+
+            [
+
+                {
+                    text: "YESSS",
+
+                    action: closeDialogue
+
+                }
+
+            ]
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   BEACH
+   ========================================================= */
+
+function goBeach() {
+
+    advanceTime(30);
+
+    hideScenes();
+
+    document.getElementById(
+        "beachScreen"
+    ).style.display =
+        "block";
+
+}
+
+
+function takePhoto(subject) {
+
+    game.photoTaken = true;
+
+    if (subject === "sunset") {
+
+        addMemory(
+            "A Perfect Sunset"
+        );
+
+        document.getElementById(
+            "cameraText"
+        ).innerText =
+            "PHOTO SAVED: PERFECT SUNSET 📸";
+
+    }
+
+    if (subject === "ocean") {
+
+        addMemory(
+            "The Endless Ocean"
+        );
+
+        document.getElementById(
+            "cameraText"
+        ).innerText =
+            "PHOTO SAVED: OCEAN 📸";
+
+    }
+
+    if (subject === "friend") {
+
+        game.relationship += 10;
+
+        addMemory(
+            "Someone Special"
+        );
+
+        document.getElementById(
+            "cameraText"
+        ).innerText =
+            "PHOTO SAVED: SOMEONE SPECIAL ❤️";
+
+    }
+
+}
+
+
+/* =========================================================
+   HIDE SCENES
+   ========================================================= */
+
+function hideScenes() {
+
+    document.getElementById(
+        "bedroom"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "map"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "phoneScreen"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "arcadeScreen"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "beachScreen"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "cafeScreen"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   DIALOGUE SYSTEM
+   ========================================================= */
+
+function showDialogue(
+    name,
+    text,
+    buttons
+) {
+
+    document.getElementById(
+        "dialogueName"
+    ).innerHTML =
+        name;
+
+    document.getElementById(
+        "dialogueText"
+    ).innerHTML =
+        text;
+
+
+    let container =
+        document.getElementById(
+            "dialogueButtons"
+        );
+
+    container.innerHTML = "";
+
+
+    buttons.forEach(
+        function(button) {
+
+            let b =
+                document.createElement(
+                    "button"
+                );
+
+            b.className =
+                "retro-button";
+
+            b.innerHTML =
+                button.text;
+
+            b.onclick =
+                button.action;
+
+            container.appendChild(b);
+
+        }
+    );
+
+
+    document.getElementById(
+        "dialogue"
+    ).style.display =
+        "block";
+
+}
+
+
+function closeDialogue() {
+
+    document.getElementById(
+        "dialogue"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   RANDOM EVENT
+   ========================================================= */
+
+function randomEvent() {
+
+    let events = [
+
+        {
+            title: "🚲 SOMETHING HAPPENED",
+
+            text:
+                "Someone drops their wallet in front of you.",
+
+            options: [
+                "Return it",
+                "Leave it"
+            ]
+
+        },
+
+        {
+            title: "🌧️ RAIN",
+
+            text:
+                "Rain suddenly starts falling.",
+
+            options: [
+                "Dance in it",
+                "Run home"
+            ]
+
+        },
+
+        {
+            title: "📱 UNKNOWN CALL",
+
+            text:
+                "Your phone starts ringing.<br><br>" +
+                "UNKNOWN NUMBER.",
+
+            options: [
+                "Answer",
+                "Ignore"
+            ]
+
+        }
+
+    ];
+
+
+    let event =
+        events[
+            Math.floor(
+                Math.random() *
+                events.length
+            )
+        ];
+
+
+    showEvent(
+        event.title,
+        event.text,
+        event.options
+    );
+
+}
+
+
+/* =========================================================
+   EVENT POPUP
+   ========================================================= */
+
+function showEvent(
+    title,
+    text,
+    options
+) {
+
+    document.getElementById(
+        "eventTitle"
+    ).innerText =
+        title;
+
+    document.getElementById(
+        "eventContent"
+    ).innerHTML =
+        text +
+        "<div class='event-buttons'>" +
+
+        options.map(
+            function(option) {
+
+                return `
+                    <button
+                        class="retro-button"
+                        onclick="eventChoice('${option}')"
+                    >
+                        ${option}
+                    </button>
+                `;
+
+            }
+        ).join("") +
+
+        "</div>";
+
+
+    document.getElementById(
+        "eventPopup"
+    ).style.display =
+        "block";
+
+}
+
+
+function eventChoice(choice) {
+
+    document.getElementById(
+        "eventPopup"
+    ).style.display =
+        "none";
+
+
+    if (choice === "Return it") {
+
+        game.mood += 5;
+
+        addMemory(
+            "Returned Wallet"
+        );
+
+    }
+
+
+    if (choice === "Dance in it") {
+
+        game.mood += 10;
+
+        addMemory(
+            "Rain Dance"
+        );
+
+    }
+
+
+    if (choice === "Answer") {
+
+        game.mystery = true;
+
+        addClue(
+            "Answered the unknown call"
+        );
+
+        showDialogue(
+
+            "UNKNOWN",
+
+            "\"6:42 PM.\"<br><br>" +
+            "The call ends.",
+
+            [
+                {
+                    text: "WHAT?",
+                    action: closeDialogue
+                }
+            ]
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   6:42 EVENT
+   ========================================================= */
+
+function checkSixFortyTwo() {
+
+    if (
+        game.hour === 18 &&
+        game.minute >= 42 &&
+        !game.sixFortyTwo
+    ) {
+
+        game.sixFortyTwo = true;
+
+        showDialogue(
+
+            "6:42 PM",
+
+            "Your phone buzzes.<br><br>" +
+            "\"You made it.\"<br><br>" +
+            "You look around.<br>" +
+            "Nobody is there.",
+
+            [
+
+                {
+                    text: "Look around.",
+
+                    action: function() {
+
+                        game.mystery = true;
+
+                        addClue(
+                            "6:42 PM happened"
+                        );
+
+                        addMemory(
+                            "The 6:42 Moment"
+                        );
+
+                        closeDialogue();
+
+                    }
+
+                }
+
+            ]
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   END DAY
+   ========================================================= */
+
+function finishDay() {
+
+    document.getElementById(
+        "endingScreen"
+    ).style.display =
+        "flex";
+
+
+    let ending =
+        "THE MEMORY MAKER";
+
+
+    if (
+        game.clues.length >= 4
+    ) {
+
+        ending =
+            "👁️ THE DAY THAT SHOULDN'T EXIST";
+
+    }
+
+    else if (
+        game.relationship >= 30
+    ) {
+
+        ending =
+            "❤️ THE ROMANTIC";
+
+    }
+
+    else if (
+        game.memories.length <= 2
+    ) {
+
+        ending =
+            "🌙 THE QUIET DAY";
+
+    }
+
+    else if (
+        game.decisions >= 15
+    ) {
+
+        ending =
+            "🌀 THE CHAOS AGENT";
+
+    }
+
+
+    document.getElementById(
+        "endingTitle"
+    ).innerText =
+        ending;
+
+
+    document.getElementById(
+        "endingStats"
+    ).innerHTML =
+
+        "17 HOURS<br>" +
+
+        game.decisions +
+        " DECISIONS<br>" +
+
+        game.memories.length +
+        " MEMORIES<br>" +
+
+        game.peopleMet +
+        " PEOPLE MET<br>" +
+
+        game.clues.length +
+        " CLUES FOUND<br><br>" +
+
+        (
+            game.mystery
+                ? "1 MYSTERY STARTED"
+                : "0 MYSTERIES FOUND"
+        );
+
+}
+
+
+/* =========================================================
+   RESTART
+   ========================================================= */
+
+function restartGame() {
+
+    localStorage.removeItem(
+        "perfectDaySave"
+    );
+
+    location.reload();
+
+}
+
+
+/* =========================================================
+   OPEN / CLOSE GAME
+   ========================================================= */
+
+function openGame() {
+
+    document.getElementById(
+        "gameWindow"
+    ).style.display =
+        "flex";
+
+}
+
+
+function closeGame() {
+
+    document.getElementById(
+        "gameWindow"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+window.onload = function() {
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "loading"
+            ).style.display =
+                "none";
+
+        },
+        1900
+    );
+
+
+    updateHUD();
+
+
+    setInterval(
+        checkSixFortyTwo,
+        1000
+    );
+
+};
+
+</script>
+
+
+</body>
+
+</html>
