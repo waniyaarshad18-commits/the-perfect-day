@@ -1,20 +1,279 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>THE PERFECT DAY</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            background-color: #008080;
+            font-family: Arial, sans-serif;
+            cursor: crosshair;
+        }
+
+        .window {
+            width: 900px;
+            height: 600px;
+            margin: 40px auto;
+            background-color: #c0c0c0;
+            border: 3px solid #ffffff;
+            box-shadow: 6px 6px 0px #000000;
+        }
+
+        .titlebar {
+            background: linear-gradient(
+                to right,
+                #000080,
+                #1084d7
+            );
+
+            color: white;
+            padding: 7px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .game {
+            background-color: #d8d8d8;
+            height: calc(100% - 40px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clock {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+
+            background: #000000;
+            color: #00ff00;
+
+            padding: 8px 15px;
+
+            font-family: monospace;
+            font-size: 20px;
+        }
+
+        .room {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 700px;
+            height: 420px;
+
+            background: #b58b6a;
+
+            border: 5px solid #704c35;
+        }
+
+        .bed {
+            position: absolute;
+            left: 60px;
+            bottom: 50px;
+
+            font-size: 80px;
+
+            cursor: pointer;
+        }
+
+        .phone {
+            position: absolute;
+            left: 330px;
+            bottom: 80px;
+
+            font-size: 55px;
+
+            cursor: pointer;
+        }
+
+        .window-object {
+            position: absolute;
+            right: 60px;
+            top: 50px;
+
+            font-size: 80px;
+
+            cursor: pointer;
+        }
+
+        .door {
+            position: absolute;
+            right: 60px;
+            bottom: 30px;
+
+            font-size: 80px;
+
+            cursor: pointer;
+        }
+
+        .headphones {
+            position: absolute;
+            left: 200px;
+            top: 70px;
+
+            font-size: 60px;
+
+            cursor: pointer;
+        }
+
+        .photo {
+            position: absolute;
+            left: 450px;
+            top: 80px;
+
+            font-size: 50px;
+
+            cursor: pointer;
+        }
+
+        .stats {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            background: #c0c0c0;
+
+            border-top: 3px solid white;
+
+            padding: 8px;
+
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        .message {
+            position: absolute;
+
+            left: 50%;
+            top: 20px;
+
+            transform: translateX(-50%);
+
+            background: white;
+
+            padding: 10px 20px;
+
+            border: 2px solid black;
+
+            display: none;
+
+            z-index: 10;
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-    <h1>THE PERFECT DAY</h1>
+<div class="window">
 
-    <p>7:03 AM</p>
+    <div class="titlebar">
+        🎮 THE PERFECT DAY — v1.0
+    </div>
 
-    <p>You wake up.</p>
+    <div class="game">
 
-    <button>📱 Check Phone</button>
-    <button>🛏️ Look at Bed</button>
-    <button>🪟 Look Outside</button>
+        <div class="clock">
+            7:03 AM
+        </div>
+
+        <div class="message" id="message">
+            Hello.
+        </div>
+
+        <div class="room">
+
+            <div class="bed" onclick="interact('bed')">
+                🛏️
+            </div>
+
+            <div class="phone" onclick="interact('phone')">
+                📱
+            </div>
+
+            <div class="window-object" onclick="interact('window')">
+                🪟
+            </div>
+
+            <div class="door" onclick="interact('door')">
+                🚪
+            </div>
+
+            <div class="headphones" onclick="interact('headphones')">
+                🎧
+            </div>
+
+            <div class="photo" onclick="interact('photo')">
+                🖼️
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            ❤️ 100 &nbsp;&nbsp;
+            ⚡ 100 &nbsp;&nbsp;
+            😊 75 &nbsp;&nbsp;
+            🧠 0 Memories
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function interact(object) {
+
+    let message = document.getElementById("message");
+
+    if (object === "bed") {
+        message.innerHTML = "You could sleep for another five hours...";
+    }
+
+    if (object === "phone") {
+        message.innerHTML =
+        "📱 8 notifications<br><br>" +
+        "Mom: Breakfast?<br>" +
+        "Best Friend: BRO WAKE UP.<br>" +
+        "Unknown: Don't go to the park today. 👁️";
+    }
+
+    if (object === "window") {
+        message.innerHTML =
+        "The morning light is coming through the window.<br>" +
+        "It looks like it's going to be a beautiful day.";
+    }
+
+    if (object === "door") {
+        message.innerHTML =
+        "The day is waiting outside.";
+    }
+
+    if (object === "headphones") {
+        message.innerHTML =
+        "Your headphones.<br>Probably going to need these today.";
+    }
+
+    if (object === "photo") {
+        message.innerHTML =
+        "A photograph from a day you don't remember.";
+    }
+
+    message.style.display = "block";
+
+}
+
+</script>
 
 </body>
 </html>
